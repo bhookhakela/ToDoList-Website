@@ -15,7 +15,11 @@
     <h1>{{List}}</h1>
     <ul>
         {% for item in List.item_set.all %}
-            <li>{{item.name}}</li>
+            {% if not item.completed %}
+                <li>{{item.name}} -INCOMPLETE</li>
+            {% else %}
+                <li>{{item.name}} -COMPLETE</li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}
