@@ -9,7 +9,15 @@
 <body>
 {% block headingblock %}
 <h1>ToDoList App</h1><br>
-<h1>{{List}}</h1>
+
+{% endblock %}
+{% block contentblock %}
+    <h1>{{List}}</h1>
+    <ul>
+        {% for item in List.item_set.all %}
+            <li>{{item.name}}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
 </body>
 </html>
