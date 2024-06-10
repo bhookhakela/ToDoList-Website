@@ -13,15 +13,22 @@
 {% endblock %}
 {% block contentblock %}
     <h1>{{List}}</h1>
-    <ul>
-        {% for item in List.item_set.all %}
-            {% if not item.completed %}
-                <li>{{item.name}} -INCOMPLETE</li>
-            {% else %}
-                <li>{{item.name}} -COMPLETE</li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <form method="post" action="#">
+        {% csrf_token %}
+        <ul>
+            {% for item in List.item_set.all %}
+                {% if not item.completed %}
+                    <li><input type="checkbox" value="clicked" name="c{{item.id}}" checked>{{item.name}}</li>
+                {% else %}
+                    <li><input type="checkbox" value="clicked" name="c{{item.id}}">{{item.name}}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <button type="submit" name="save">Save Tasks</button><br>
+        <input type="text" name="new"><br>
+        <button type="submit" name="newitem">New Item</button>
+    </form>
+
 {% endblock %}
 </body>
 </html>
