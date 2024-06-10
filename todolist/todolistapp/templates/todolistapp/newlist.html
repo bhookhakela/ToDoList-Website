@@ -6,6 +6,11 @@
     <h1>Create a new ToDoList</h1>
 {% endblock %}
 {% block contentblock %}
-    {{form}}
+<form method="post" action="/create/">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" name="save">Create List</button>
+</form>
+
 {% endblock %}
 
