@@ -4,6 +4,25 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .forms import createlist
 def index(request,id):
     t=TodoList.objects.get(id=id)
+
+    if request.method=='POST':
+        print(request.POST)
+
+        if request.POST.get('save'):
+
+            for item in t.item_set.all():
+                if request.POST.get('c'+str(item.id))=='clicked':
+                    item.completed=True
+                else:
+                    item.completed=False
+                item.save()
+
+        if request.POST.get('newitem'):
+            text=request.POST.get('new')
+            t.item_set.create(name=text)
+
+
+
     return render(request, "todolistapp/base.html", {"List": t})
 def home(request):
     return render(request, 'todolistapp/home.html')
