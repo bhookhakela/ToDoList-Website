@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% block titleblock %}
-    <title>Harsh's Website</title>
-    {% endblock %}
-</head>
-<body>
-{% block headingblock %}
-<h1>ToDoList App</h1><br>
+{% extends "todolistapp/parent.html" %}
 
+{% block titleblock %}
+    <title>Harsh's Website</title>
+{% endblock %}
+{% block headingblock %}
+    <h1>ToDoList App</h1><br>
 {% endblock %}
 {% block contentblock %}
     <h1>{{List}}</h1>
@@ -30,5 +25,3 @@
     </form>
 
 {% endblock %}
-</body>
-</html>
