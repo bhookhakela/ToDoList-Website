@@ -4,24 +4,34 @@
     <title>Harsh's Website</title>
 {% endblock %}
 {% block headingblock %}
-    <h1>ToDoList App</h1><br>
+    <h1>ToDoList App</h1>
 {% endblock %}
 {% block contentblock %}
-    <h1>{{List}}</h1>
+    <h1 >{{List}}</h1>
     <form method="post" action="#">
         {% csrf_token %}
-        <ul>
             {% for item in List.item_set.all %}
-                {% if item.completed %}
-                    <li><input type="checkbox" value="clicked" name="c{{item.id}}" checked>{{item.name}}</li>
-                {% else %}
-                    <li><input type="checkbox" value="clicked" name="c{{item.id}}">{{item.name}}</li>
-                {% endif %}
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text pr-1 pl-1 mr-2">
+                            {% if item.completed %}
+                                <input type="checkbox" value="clicked" name="c{{item.id}}" checked>
+                            {% else %}
+                                <input type="checkbox" value="clicked" name="c{{item.id}}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    {{item.name}}
+                </div>
             {% endfor %}
-        </ul>
-        <button type="submit" name="save" value="pressed">Save Tasks</button>
-        <input type="text" name="new">
-        <button type="submit" name="newitem" value="pressed">New Item</button>
+        <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+                <button type="submit" name="save" value="pressed" class="btn btn-success">Save Tasks</button>
+            </div>
+            <input type="text" name="new">
+        </div>
+
+        <button type="submit" name="newitem" value="pressed" class="btn btn-success">New Item</button>
     </form>
 
 {% endblock %}

@@ -8,8 +8,13 @@
 {% block contentblock %}
 <form method="post" action="/create/">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" name="save">Create List</button>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button type="submit" name="save" class="btn btn-success">Create List</button>
+
+        </div>
+        {{form.name}}
+    </div>
 </form>
 {% endblock %}
 
