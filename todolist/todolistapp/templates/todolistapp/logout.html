@@ -1,0 +1,7 @@
+{% extends "todolistapp/parent.html" %}
+{% block contentblock %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="logout" class="btn btn-success" value="pressed">Log Out</button>
+    </form>
+{% endblock %}

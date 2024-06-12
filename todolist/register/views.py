@@ -9,7 +9,6 @@ def register(request):
         if registerform.is_valid():
             registerform.save()
             return HttpResponseRedirect("/login")
-        # print(request.POST)
     else:
         registerform = RegistrationForm()
     return render(request, 'register/register.html',{'registerform':registerform})

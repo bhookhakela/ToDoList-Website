@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render
 from .models import TodoList,Item
 from django.http import HttpResponse, HttpResponseRedirect
@@ -25,6 +26,7 @@ def index(request,id):
 
     return render(request, "todolistapp/base.html", {"List": t})
 def home(request):
+    print(request.user.is_authenticated)
     return render(request, 'todolistapp/home.html')
 
 def newlist(request):
@@ -39,3 +41,8 @@ def newlist(request):
         makeform = createlist()
     return render(request, 'todolistapp/newlist.html', {"form": makeform})
 # Create your views here.
+def user_logout(request):
+    if request.method=='POST':
+        logout(request)
+        return HttpResponseRedirect("/")
+    return render(request, 'todolistapp/logout.html')
