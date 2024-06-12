@@ -8,7 +8,7 @@ def register(request):
         registerform = RegistrationForm(request.POST)
         if registerform.is_valid():
             registerform.save()
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/login")
         # print(request.POST)
     else:
         registerform = RegistrationForm()

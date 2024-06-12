@@ -1,0 +1,15 @@
+{% extends "todolistapp/parent.html" %}
+{% load crispy_forms_tags %}
+{% block headingblock %}
+    <h1>Login</h1>
+{% endblock %}
+{% block contentblock %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <p>Not Created an account yet? To create one click <a href="/register/">here</a> </p>
+        <button type="submit" name="login" value="pressed" class="btn btn-success">Login</button>
+
+    </form>
+{% endblock %}
