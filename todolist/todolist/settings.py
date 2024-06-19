@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "todolistapp.apps.TodolistappConfig",
     "register.apps.RegisterConfig",
+    "rest_framework",
+    "api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [
